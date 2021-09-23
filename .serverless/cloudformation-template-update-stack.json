@@ -1,0 +1,124 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "The AWS CloudFormation template for this Serverless application",
+  "Resources": {
+    "ServerlessDeploymentBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "ServerlessDeploymentBucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {
+          "Ref": "ServerlessDeploymentBucket"
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "s3:*",
+              "Effect": "Deny",
+              "Principal": "*",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":s3:::",
+                      {
+                        "Ref": "ServerlessDeploymentBucket"
+                      },
+                      "/*"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":s3:::",
+                      {
+                        "Ref": "ServerlessDeploymentBucket"
+                      }
+                    ]
+                  ]
+                }
+              ],
+              "Condition": {
+                "Bool": {
+                  "aws:SecureTransport": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "BaseLayerLambdaLayer0a6f2546acc2775cdec7aa1662cfac6bd1695a70": {
+      "Type": "AWS::Lambda::LayerVersion",
+      "Properties": {
+        "Content": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/base-layer/dev/1632345753162-2021-09-22T21:22:33.162Z/baseLayer.zip"
+        },
+        "LayerName": "baseLayer",
+        "CompatibleRuntimes": [
+          "nodejs14.x"
+        ]
+      },
+      "DeletionPolicy": "Retain"
+    }
+  },
+  "Outputs": {
+    "ServerlessDeploymentBucketName": {
+      "Value": {
+        "Ref": "ServerlessDeploymentBucket"
+      },
+      "Export": {
+        "Name": "sls-base-layer-dev-ServerlessDeploymentBucketName"
+      }
+    },
+    "BaseLayerLambdaLayerQualifiedArn": {
+      "Description": "Current Lambda layer version",
+      "Value": {
+        "Ref": "BaseLayerLambdaLayer0a6f2546acc2775cdec7aa1662cfac6bd1695a70"
+      },
+      "Export": {
+        "Name": "sls-base-layer-dev-BaseLayerLambdaLayerQualifiedArn"
+      }
+    },
+    "BaseLayerLambdaLayerHash": {
+      "Description": "Current Lambda layer hash",
+      "Value": "0a6f2546acc2775cdec7aa1662cfac6bd1695a70",
+      "Export": {
+        "Name": "sls-base-layer-dev-BaseLayerLambdaLayerHash"
+      }
+    },
+    "BaseLayerLambdaLayerS3Key": {
+      "Description": "Current Lambda layer S3Key",
+      "Value": "serverless/base-layer/dev/1632345753162-2021-09-22T21:22:33.162Z/baseLayer.zip",
+      "Export": {
+        "Name": "sls-base-layer-dev-BaseLayerLambdaLayerS3Key"
+      }
+    }
+  }
+}
