@@ -87,14 +87,14 @@
               }
             }
           },
-          "BaseLayerLambdaLayer0a6f2546acc2775cdec7aa1662cfac6bd1695a70": {
+          "BaseLayerLambdaLayerf6691c6563b19deed4845e36af9a531628aade72": {
             "Type": "AWS::Lambda::LayerVersion",
             "Properties": {
               "Content": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/base-layer/dev/1632345753162-2021-09-22T21:22:33.162Z/baseLayer.zip"
+                "S3Key": "serverless/base-layer/dev/1633188881063-2021-10-02T15:34:41.063Z/baseLayer.zip"
               },
               "LayerName": "baseLayer",
               "CompatibleRuntimes": [
@@ -116,7 +116,7 @@
           "BaseLayerLambdaLayerQualifiedArn": {
             "Description": "Current Lambda layer version",
             "Value": {
-              "Ref": "BaseLayerLambdaLayer0a6f2546acc2775cdec7aa1662cfac6bd1695a70"
+              "Ref": "BaseLayerLambdaLayerf6691c6563b19deed4845e36af9a531628aade72"
             },
             "Export": {
               "Name": "sls-base-layer-dev-BaseLayerLambdaLayerQualifiedArn"
@@ -124,14 +124,14 @@
           },
           "BaseLayerLambdaLayerHash": {
             "Description": "Current Lambda layer hash",
-            "Value": "0a6f2546acc2775cdec7aa1662cfac6bd1695a70",
+            "Value": "f6691c6563b19deed4845e36af9a531628aade72",
             "Export": {
               "Name": "sls-base-layer-dev-BaseLayerLambdaLayerHash"
             }
           },
           "BaseLayerLambdaLayerS3Key": {
             "Description": "Current Lambda layer S3Key",
-            "Value": "serverless/base-layer/dev/1632345753162-2021-09-22T21:22:33.162Z/baseLayer.zip",
+            "Value": "serverless/base-layer/dev/1633188881063-2021-10-02T15:34:41.063Z/baseLayer.zip",
             "Export": {
               "Name": "sls-base-layer-dev-BaseLayerLambdaLayerS3Key"
             }
@@ -246,7 +246,7 @@
           "path": "base",
           "retain": true,
           "compatibleRuntimes": {
-            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"BaseLayerLambdaLayer0a6f2546acc2775cdec7aa1662cfac6bd1695a70\"][\"Properties\"][\"CompatibleRuntimes\"]"
+            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"BaseLayerLambdaLayerf6691c6563b19deed4845e36af9a531628aade72\"][\"Properties\"][\"CompatibleRuntimes\"]"
           },
           "package": {
             "artifact": "/home/gerardo/PC ACCESO/Edgar/AWS/Cursos Dev/serverless/02-layers-lambdas/layer/.serverless/baseLayer.zip"
@@ -260,7 +260,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/base-layer/dev/1632345753162-2021-09-22T21:22:33.162Z",
+    "artifactDirectoryName": "serverless/base-layer/dev/1633188881063-2021-10-02T15:34:41.063Z",
     "artifact": ""
   }
 }
